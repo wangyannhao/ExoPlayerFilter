@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.daasuu.epf.CustomRendererFactory;
 import com.daasuu.epf.EPlayerView;
 import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.MediaItem;
@@ -124,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         // SimpleExoPlayer
         player = new ExoPlayer.Builder(this)
                 .setMediaSourceFactory(new ProgressiveMediaSource.Factory(dataSourceFactory))
+                .setRenderersFactory(new CustomRendererFactory(this))
                 .build();
         player.addMediaItem(MediaItem.fromUri(Constant.STREAM_URL_MP4_VOD_SHORT));
         player.prepare();
